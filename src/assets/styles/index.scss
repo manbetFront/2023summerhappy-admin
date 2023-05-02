@@ -1,0 +1,331 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.iblock {
+  display: inline-block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+.c-filter {
+  // padding: 5px;
+  margin-bottom: 10px;
+  // border-radius: 5px;
+  border-bottom: 1px solid #ddd;
+  // background: #f9f9f9;
+
+  .el-select,
+  .el-input {
+    width: 200px;
+  }
+
+}
+
+.c-operate {
+  @include clearfix;
+  margin-bottom: 10px;
+  .c-o-left {
+    float: left;
+  }
+  .c-o-right {
+    float: right;
+  }
+  .upload {
+    display: inline-block;
+  }
+}
+
+.c-table {
+  thead th {
+    background: #f5f7fa;
+    text-align: center;
+    .sub-title {
+      line-height: 16px;
+      display: block;
+    }
+  }
+  td {
+    text-align: center;
+  }
+}
+
+.c-table-operate {
+  .el-link {
+    margin: 0 5px;
+  }
+}
+
+.c-popover {
+  .c-popover-btn {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.el-dialog {
+  margin-bottom: 15vh;
+  .el-dialog__body {
+    padding: 25px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+ul, li {
+  list-style: none;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.img-list {
+  margin-left: 100px;
+  height: 100px;
+  .fl {
+    margin-left: 10px;
+  }
+  .img-item {
+    position: relative;
+    width: 120px;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+
+    i {
+      position: absolute;
+      right: -2px;
+      font-size: 16px;
+      color: #a9a9a9;
+      cursor: pointer;
+    }
+
+    .icon-close {
+      position: absolute;
+      right: -2px;
+      font-size: 16px;
+      // color: red;
+      cursor: pointer;
+    }
+  }
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.inner-dialog {
+  margin: auto;
+  text-align: center;
+}
+
+.file-height {
+  height: 90px;
+}
+
+.warning {
+  color: #E6A23C;
+}
+
+.danger {
+  color: #F56C6C;
+}
+.success {
+  color: #67C23A;
+}
+
