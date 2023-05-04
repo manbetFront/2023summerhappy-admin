@@ -5,11 +5,11 @@ import qs from "qs";
 class SetService extends Service {
   // 获取活动时间
   getInfo() {
-    return this.http.get(`/new_year/activity/list`);
+    return this.http.get(`/activity/get`);
   }
-
+  // 设置活动时间
   setInfo(param) {
-    return this.http.post("/new_year/activity/create", param);
+    return this.http.post("/activity/set", param);
   }
 }
 

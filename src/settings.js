@@ -1,5 +1,5 @@
 module.exports = {
-  title: "VN元旦专题活动",
+  title: "MX盛夏狂欢季活动",
 
   /**
    * 是否系统布局配置

@@ -79,7 +79,7 @@ export const constantRoutes = [
         component: () => import("@/views/theme_one"),
         name: "themeOne",
         meta: {
-          title: "主题一",
+          title: "主题一派发领取记录",
           icon: "",
           noCache: true,
           affix: true
@@ -96,7 +96,7 @@ export const constantRoutes = [
         component: () => import("@/views/theme_two"),
         name: "themeTwo",
         meta: {
-          title: "主题二",
+          title: "主题二派发领取记录",
           icon: "",
           noCache: true,
           affix: true
@@ -113,7 +113,7 @@ export const constantRoutes = [
         component: () => import("@/views/reports"),
         name: "reports",
         meta: {
-          title: "报表",
+          title: "投注历史",
           icon: "",
           noCache: true,
           affix: true

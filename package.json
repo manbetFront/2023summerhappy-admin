@@ -1,7 +1,7 @@
 {
-  "name": "oa-main-system",
+  "name": "special-2023",
   "version": "0.1.0",
-  "description": "oa系统",
+  "description": "MX盛夏狂欢季活动",
   "author": "devin",
   "license": "MIT",
   "scripts": {
@@ -12,6 +12,7 @@
     "develop": "vue-cli-service build --mode development",
     "build:prod": "vue-cli-service build --mode production",
     "build": "vue-cli-service build --mode production",
+    "build:uat": "vue-cli-service build --mode uat",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintFix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },

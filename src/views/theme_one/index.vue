@@ -9,22 +9,14 @@
       highlight-current-row
       class="c-table"
     >
-      <el-table-column
-        label="序号"
-        type="index"
-        :index="indexMethod"
-        width="120"
-      />
-      <el-table-column label="日期" width="120" prop="date" />
+      <el-table-column label="序号" type="index" :index="index" width="120" />
       <el-table-column label="账号" width="120" prop="username" />
-      <el-table-column label="游戏平台" prop="game_slug" width="120" />
-
-      <el-table-column
-        label="有效投注金额"
-        prop="valid_bet_amount"
-        width="150"
-      />
-      <el-table-column label="已完成次数" prop="total_count" />
+      <el-table-column label="游戏类型" width="120" prop="username" />
+      <el-table-column label="任务平台名称" width="120" prop="username" />
+      <el-table-column label="派发时间" width="120" prop="username" />
+      <el-table-column label="彩金" prop="deposit_amount" width="150" />
+      <el-table-column label="领取时间" prop="feast_count" />
+      <el-table-column label="领取状态" prop="feast_count" />
     </el-table>
 
     <Pagination
@@ -47,7 +39,6 @@ export default {
   data() {
     return {
       listLoading: false,
-      money: "",
       tableData: [],
       listQuery: {
         page: 1,
@@ -78,8 +69,13 @@ export default {
         .then(res => {
           this.listLoading = false;
           const { data } = res;
-          this.data = data.list || [];
-          this.total = data.meta.total || 0;
+          if (res.code == 200) {
+            this.data = [{ ...data }] || [];
+            this.total = data.length || 0;
+          } else {
+            this.data = [];
+            this.total = 0;
+          }
         })
         .catch(() => {
           this.data = [];

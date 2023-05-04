@@ -7,7 +7,7 @@
       class="login-form"
     >
       <h3 class="title">
-        VN元旦专题活动
+        MX盛夏狂欢季活动
       </h3>
       <el-form-item prop="username">
         <el-input

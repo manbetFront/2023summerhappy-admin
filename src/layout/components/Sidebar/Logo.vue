@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="sidebar-logo-container"
-    :class="{'collapse':collapse}"
-  >
+  <div class="sidebar-logo-container" :class="{ collapse: collapse }">
     <transition name="sidebarLogoFade">
       <router-link
         v-if="collapse"
@@ -10,29 +7,13 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <img
-          v-if="logo"
-          :src="logo"
-          class="sidebar-logo"
-        >
-        <h1
-          v-else
-          class="sidebar-title"
-        >
+        <img v-if="logo" :src="logo" class="sidebar-logo" />
+        <h1 v-else class="sidebar-title">
           {{ title }}
         </h1>
       </router-link>
-      <router-link
-        v-else
-        key="expand"
-        class="sidebar-logo-link"
-        to="/"
-      >
-        <img
-          v-if="logo"
-          :src="logo"
-          class="sidebar-logo"
-        >
+      <router-link v-else key="expand" class="sidebar-logo-link" to="/">
+        <img v-if="logo" :src="logo" class="sidebar-logo" />
         <h1 class="sidebar-title">
           {{ title }}
         </h1>
@@ -42,10 +23,10 @@
 </template>
 
 <script>
-import logoImg from '@/assets/logo/logo.png'
+import logoImg from "@/assets/logo/logo.png";
 
 export default {
-  name: 'SidebarLogo',
+  name: "SidebarLogo",
   props: {
     collapse: {
       type: Boolean,
@@ -54,11 +35,11 @@ export default {
   },
   data() {
     return {
-      title: 'ManbetX后台管理系统',
+      title: "MX盛夏狂欢季活动",
       logo: logoImg
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

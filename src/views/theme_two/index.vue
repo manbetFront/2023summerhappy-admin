@@ -9,18 +9,13 @@
       highlight-current-row
       class="c-table"
     >
-      <el-table-column
-        label="序号"
-        type="index"
-        :index="indexMethod"
-        width="120"
-      />
+      <el-table-column label="序号" type="index" :index="index" width="120" />
       <el-table-column label="账号" width="120" prop="username" />
-      <el-table-column label="存款金额" prop="deposit_amount" width="150" />
+      <el-table-column label="派发时间" width="120" prop="date" />
+      <el-table-column label="彩金" width="120" prop="date" />
 
-      <el-table-column label="可解锁人物" prop="unlock_count" />
-      <el-table-column label="已解锁人物" prop="delock_count" />
-      <el-table-column label="完成任务" prop="task_count" />
+      <el-table-column label="领取时间" prop="bet_amount" width="150" />
+      <el-table-column label="领取状态" prop="user_count" />
     </el-table>
 
     <Pagination
@@ -73,9 +68,9 @@ export default {
       })
         .then(res => {
           this.listLoading = false;
-          const { data } = res;
-          this.data = data.list || [];
-          this.total = data.meta.total || 0;
+          const { pageData } = res.data;
+          this.data = pageData.data || [];
+          this.total = pageData.total || 0;
         })
         .catch(() => {
           this.data = [];

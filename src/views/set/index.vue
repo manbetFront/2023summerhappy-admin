@@ -21,7 +21,7 @@
             end-placeholder="结束日期"
           />
         </el-form-item>
-        <el-form-item label="活动条件满足时间">
+        <el-form-item label="活动条件时间">
           <el-date-picker
             v-model="meetTime"
             type="datetimerange"
@@ -48,11 +48,11 @@ export default {
     return {
       loading: false,
       form: {
-        status: 1,
-        total_start_time: "",
-        total_end_time: "",
-        condition_start_time: "",
-        condition_end_time: ""
+        status: 1
+        // total_start_time: "",
+        // total_end_time: "",
+        // condition_start_time: "",
+        // condition_end_time: ""
       },
       set: {},
       totalTime: [],
@@ -69,18 +69,11 @@ export default {
           const { data } = res;
           if (res.code == 200) {
             let form = {
-              status: data.status,
-              total_start_time: data.total_start_time,
-              total_end_time: data.total_end_time,
-              condition_start_time: data.condition_start_time,
-              condition_end_time: data.condition_end_time
+              status: data.status
             };
             this.form = form;
-            this.totalTime = [data.total_start_time, data.total_end_time];
-            this.meetTime = [
-              data.condition_start_time,
-              data.condition_end_time
-            ];
+            this.totalTime = [data.start_time, data.end_time];
+            this.meetTime = [data.start_time1, data.end_time1];
           } else {
             this.$message.error("获取失败");
           }
@@ -101,12 +94,13 @@ export default {
       if (tip) {
         return this.$message.error(tip);
       }
-
-      this.form.total_start_time = totalTime[0];
-      this.form.total_end_time = totalTime[1];
-
-      this.form.condition_start_time = meetTime[0];
-      this.form.condition_end_time = meetTime[1];
+      this.form = {
+        status: this.form.status,
+        start_time: totalTime[0],
+        end_time: totalTime[1],
+        start_time1: meetTime[0],
+        end_time1: meetTime[1]
+      };
 
       ApiService.setInfo({
         ...this.form
