@@ -3,7 +3,7 @@
     <div class="content">
       <el-form ref="form" :model="form" label-width="130px">
         <el-form-item label="活动状态">
-          <el-radio-group v-model="form.status">
+          <el-radio-group v-model="form.is_open">
             <el-radio :label="1" :value="1">
               开启
             </el-radio>
@@ -48,11 +48,7 @@ export default {
     return {
       loading: false,
       form: {
-        status: 1
-        // total_start_time: "",
-        // total_end_time: "",
-        // condition_start_time: "",
-        // condition_end_time: ""
+        is_open: 1
       },
       set: {},
       totalTime: [],
@@ -64,16 +60,16 @@ export default {
   },
   methods: {
     getList() {
-      ApiService.getInfo()
+      ApiService.getInfo(1)
         .then(res => {
           const { data } = res;
-          if (res.code == 200) {
+          if (res.code == 0) {
             let form = {
-              status: data.status
+              is_open: data.is_open
             };
             this.form = form;
             this.totalTime = [data.start_time, data.end_time];
-            this.meetTime = [data.start_time1, data.end_time1];
+            this.meetTime = [data.draw_start_time, data.draw_end_time];
           } else {
             this.$message.error("获取失败");
           }
@@ -88,26 +84,26 @@ export default {
         tip = "请设置活动总时间";
       }
       if (meetTime.length == 0) {
-        tip = "请设置活动条件满足时间";
+        tip = "请设置活动条件时间";
       }
 
       if (tip) {
         return this.$message.error(tip);
       }
       this.form = {
-        status: this.form.status,
+        is_open: this.form.is_open,
         start_time: totalTime[0],
         end_time: totalTime[1],
-        start_time1: meetTime[0],
-        end_time1: meetTime[1]
+        draw_start_time: meetTime[0],
+        draw_end_time: meetTime[1]
       };
 
-      ApiService.setInfo({
+      ApiService.setInfo(1, {
         ...this.form
       })
         .then(res => {
           const { code, message } = res;
-          if (code == 200) {
+          if (code == 0) {
             this.$message.success("设置成功");
           } else {
             this.$message.error(message);

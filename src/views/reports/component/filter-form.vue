@@ -5,7 +5,7 @@
         <el-input v-model="form.username" clearable placeholder="请输入账号" />
       </el-form-item>
       <el-form-item label="时间">
-        <el-date-picker
+        <!-- <el-date-picker
           v-model="taskTime"
           style="width: 464px"
           type="datetimerange"
@@ -13,10 +13,17 @@
           value-format="yyyy-MM-dd HH:mm:ss"
           start-placeholder="开始日期"
           end-placeholder="结束日期"
+        /> -->
+        <el-date-picker
+          v-model="form.date"
+          type="date"
+          placeholder="选择日期"
+          format="yyyy 年 MM 月 dd 日"
+          value-format="yyyy-MM-dd"
         />
       </el-form-item>
       <el-form-item label="彩金类型">
-        <el-select v-model="form.amount_type" clearable placeholder="请选择">
+        <el-select v-model="form.platform" clearable placeholder="请选择">
           <el-option
             v-for="item in handsel"
             :key="item.index"
@@ -26,24 +33,13 @@
         </el-select>
       </el-form-item>
 
-      <!-- <el-form-item label="发送状态">
-        <el-select v-model="form.receive_status" clearable placeholder="请选择">
-          <el-option
-            v-for="item in sendlist"
-            :key="item.index"
-            :label="item.name"
-            :value="item.index"
-          />
-        </el-select>
-      </el-form-item> -->
-
       <el-form-item>
         <el-button type="primary" @click="onSubmit">
           搜索
         </el-button>
-        <el-button type="warning" @click="exportlist">
+        <!-- <el-button type="warning" @click="exportlist">
           导出
-        </el-button>
+        </el-button> -->
       </el-form-item>
     </el-form>
   </div>
@@ -55,36 +51,21 @@ export default {
     return {
       form: {
         username: "",
-        amount_type: "",
-        receive_status: ""
+        date: "",
+        platform: ""
       },
       taskTime: [],
       handsel: [
-        { name: "新年红包", index: 1 },
-        { name: "红包雨", index: 2 },
-        { name: "额外红包", index: 3 }
-      ],
-      sendlist: [
-        { name: "未发放", index: 0 },
-        { name: "成功", index: 1 },
-        { name: "失败", index: 2 }
+        { name: "真人", index: 1 },
+        { name: "电子", index: 3 },
+        { name: "棋牌", index: 5 }
       ]
     };
   },
   created() {},
   methods: {
     onSubmit() {
-      if (this.taskTime.length > 0) {
-        this.form.start_date = this.taskTime[0];
-        this.form.end_date = this.taskTime[1];
-      }
-      let _data = {
-        ...this.form
-      };
-      // if (!this.form.username) {
-      //   return this.$message.error("请输入账号或者注单号");
-      // }
-      this.$emit("submit", _data);
+      this.$emit("submit", this.form);
     },
 
     exportlist() {

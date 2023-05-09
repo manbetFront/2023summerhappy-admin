@@ -16,7 +16,7 @@
         />
       </el-form-item>
       <el-form-item label="游戏类型">
-        <el-select v-model="form.amount_type" clearable placeholder="请选择">
+        <el-select v-model="form.platform" clearable placeholder="请选择">
           <el-option
             v-for="item in handsel"
             :key="item.index"
@@ -27,7 +27,7 @@
       </el-form-item>
 
       <el-form-item label="领取状态">
-        <el-select v-model="form.receive_status" clearable placeholder="请选择">
+        <el-select v-model="form.status" clearable placeholder="请选择">
           <el-option
             v-for="item in sendlist"
             :key="item.index"
@@ -41,9 +41,9 @@
         <el-button type="primary" @click="onSubmit">
           搜索
         </el-button>
-        <el-button type="warning" @click="exportlist">
+        <!-- <el-button type="warning" @click="exportlist">
           导出
-        </el-button>
+        </el-button> -->
       </el-form-item>
     </el-form>
   </div>
@@ -54,24 +54,35 @@ export default {
   data() {
     return {
       form: {
-        username: ""
+        username: "",
+        platform: null,
+        start_time: "",
+        end_time: "",
+        status: null
       },
+      handsel: [
+        { name: "真人", index: 1 },
+        { name: "电子", index: 3 },
+        { name: "棋牌", index: 5 }
+      ],
       sendlist: [
-        { name: "未发放", index: 0 },
-        { name: "成功", index: 1 },
-        { name: "失败", index: 2 }
-      ]
+        { name: "待领取", index: 1 },
+        { name: "已领取", index: 2 },
+        { name: "已过期", index: 3 }
+      ],
+      taskTime: []
     };
   },
   created() {},
   methods: {
     onSubmit() {
+      if (this.taskTime.length > 0) {
+        this.form.start_time = this.taskTime[0];
+        this.form.end_time = this.taskTime[1];
+      }
       let _data = {
         ...this.form
       };
-      // if (!this.form.username) {
-      //   return this.$message.error("请输入账号或者注单号");
-      // }
       this.$emit("submit", _data);
     }
   }

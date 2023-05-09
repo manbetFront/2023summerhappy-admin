@@ -11,11 +11,17 @@
     >
       <el-table-column label="序号" type="index" :index="index" width="120" />
       <el-table-column label="账号" width="120" prop="username" />
-      <el-table-column label="派发时间" width="120" prop="date" />
-      <el-table-column label="彩金" width="120" prop="date" />
+      <el-table-column label="派发时间" width="120" prop="give_time" />
+      <el-table-column label="彩金" width="120" prop="amount" />
 
-      <el-table-column label="领取时间" prop="bet_amount" width="150" />
-      <el-table-column label="领取状态" prop="user_count" />
+      <el-table-column label="领取时间" prop="draw_time" width="150" />
+      <el-table-column label="领取状态" prop="status">
+        <template slot-scope="{ row }">
+          <span>{{
+            row.status == 1 ? "待领取" : row.status == 2 ? "已领取" : "已过期"
+          }}</span>
+        </template>
+      </el-table-column>
     </el-table>
 
     <Pagination
@@ -68,9 +74,9 @@ export default {
       })
         .then(res => {
           this.listLoading = false;
-          const { pageData } = res.data;
-          this.data = pageData.data || [];
-          this.total = pageData.total || 0;
+          const { data } = res;
+          this.data = data.data || [];
+          this.total = data.total || 0;
         })
         .catch(() => {
           this.data = [];

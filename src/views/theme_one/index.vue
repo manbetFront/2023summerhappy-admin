@@ -11,12 +11,24 @@
     >
       <el-table-column label="序号" type="index" :index="index" width="120" />
       <el-table-column label="账号" width="120" prop="username" />
-      <el-table-column label="游戏类型" width="120" prop="username" />
-      <el-table-column label="任务平台名称" width="120" prop="username" />
-      <el-table-column label="派发时间" width="120" prop="username" />
-      <el-table-column label="彩金" prop="deposit_amount" width="150" />
-      <el-table-column label="领取时间" prop="feast_count" />
-      <el-table-column label="领取状态" prop="feast_count" />
+      <el-table-column label="游戏类型" prop="platform" width="150">
+        <template slot-scope="{ row }">
+          <span>{{
+            row.platform == 1 ? "真人" : row.platform == 3 ? "电子" : "棋牌"
+          }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="任务平台名称" width="120" prop="platform_name" />
+      <el-table-column label="派发时间" width="120" prop="give_time" />
+      <el-table-column label="彩金" prop="amount" width="150" />
+      <el-table-column label="领取时间" prop="draw_time" />
+      <el-table-column label="领取状态" prop="status">
+        <template slot-scope="{ row }">
+          <span>{{
+            row.status == 1 ? "待领取" : row.status == 2 ? "已领取" : "已过期"
+          }}</span>
+        </template>
+      </el-table-column>
     </el-table>
 
     <Pagination
@@ -70,8 +82,8 @@ export default {
           this.listLoading = false;
           const { data } = res;
           if (res.code == 200) {
-            this.data = [{ ...data }] || [];
-            this.total = data.length || 0;
+            this.data = data.data || [];
+            this.total = data.total || 0;
           } else {
             this.data = [];
             this.total = 0;
