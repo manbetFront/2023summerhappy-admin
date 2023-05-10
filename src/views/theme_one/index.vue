@@ -81,7 +81,7 @@ export default {
         .then(res => {
           this.listLoading = false;
           const { data } = res;
-          if (res.code == 200) {
+          if (res.code == 0) {
             this.data = data.data || [];
             this.total = data.total || 0;
           } else {

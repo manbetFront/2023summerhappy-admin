@@ -73,7 +73,6 @@ export default {
         ...this.listQuery
       })
         .then(res => {
-          console.log(res);
           this.listLoading = false;
           const { data } = res;
           this.data = data.data || [];

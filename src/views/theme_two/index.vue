@@ -11,10 +11,14 @@
     >
       <el-table-column label="序号" type="index" :index="index" width="120" />
       <el-table-column label="账号" width="120" prop="username" />
-      <el-table-column label="派发时间" width="120" prop="give_time" />
+      <el-table-column label="派发时间" width="120" prop="created_at" />
       <el-table-column label="彩金" width="120" prop="amount" />
 
-      <el-table-column label="领取时间" prop="draw_time" width="150" />
+      <el-table-column label="领取时间" prop="draw_time" width="150">
+        <template slot-scope="{ row }">
+          <span>{{ row.draw_time ? row.draw_time : "-" }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="领取状态" prop="status">
         <template slot-scope="{ row }">
           <span>{{
