@@ -10,17 +10,17 @@
       class="c-table"
     >
       <el-table-column label="序号" type="index" :index="index" width="120" />
-      <el-table-column label="账号" width="120" prop="username" />
-      <el-table-column label="游戏类型" prop="platform" width="150">
+      <el-table-column label="账号" prop="username" />
+      <el-table-column label="游戏类型" prop="platform">
         <template slot-scope="{ row }">
           <span>{{
             row.platform == 1 ? "真人" : row.platform == 3 ? "电子" : "棋牌"
           }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="任务平台名称" width="120" prop="platform_name" />
-      <el-table-column label="派发时间" width="120" prop="give_time" />
-      <el-table-column label="彩金" prop="amount" width="150" />
+      <el-table-column label="任务平台名称" prop="platform_name" />
+      <el-table-column label="派发时间" prop="give_time" />
+      <el-table-column label="彩金" prop="amount" />
       <el-table-column label="领取时间" prop="draw_time" />
       <el-table-column label="领取状态" prop="status">
         <template slot-scope="{ row }">

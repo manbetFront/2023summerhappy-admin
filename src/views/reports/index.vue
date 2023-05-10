@@ -10,10 +10,10 @@
       class="c-table"
     >
       <el-table-column label="序号" type="index" :index="index" width="120" />
-      <el-table-column label="账号" width="120" prop="username" />
+      <el-table-column label="账号" prop="username" />
       <el-table-column label="自然周开始日期" prop="start_date" />
       <el-table-column label="自然周结束日期" prop="end_date" />
-      <el-table-column label="游戏类型" prop="platform" width="150">
+      <el-table-column label="游戏类型" prop="platform">
         <template slot-scope="{ row }">
           <span>{{
             row.platform == 1 ? "真人" : row.platform == 3 ? "电子" : "棋牌"
@@ -21,7 +21,7 @@
         </template>
       </el-table-column>
       <el-table-column label="任务平台名称" prop="platform_name" />
-      <el-table-column label="有效投注金额" prop="amount" width="150" />
+      <el-table-column label="有效投注金额" prop="amount" />
     </el-table>
 
     <Pagination
