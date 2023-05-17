@@ -21,7 +21,7 @@
         </template>
       </el-table-column>
       <el-table-column label="任务平台名称" prop="platform_name" />
-      <el-table-column label="有效投注金额" prop="amount" />
+      <el-table-column label="有效投注金额" prop="effective_betting" />
     </el-table>
 
     <Pagination
