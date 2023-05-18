@@ -41,6 +41,10 @@ export default {
   created() {},
   methods: {
     onSubmit() {
+      if (!this.form.username) {
+        this.$message.warning("请输入账号进行搜索");
+        return;
+      }
       let _data = {
         ...this.form
       };

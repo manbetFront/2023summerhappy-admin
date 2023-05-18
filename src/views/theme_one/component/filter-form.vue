@@ -76,6 +76,10 @@ export default {
   created() {},
   methods: {
     onSubmit() {
+      if (!this.form.username) {
+        this.$message.warning("请输入账号进行搜索");
+        return;
+      }
       if (this.taskTime.length > 0) {
         this.form.start_time = this.taskTime[0];
         this.form.end_time = this.taskTime[1];
