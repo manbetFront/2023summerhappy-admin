@@ -14,7 +14,7 @@
         </el-form-item>
         <el-form-item label="活动总时间">
           <el-date-picker
-            v-model="meetTime"
+            v-model="totalTime"
             type="datetimerange"
             value-format="yyyy-MM-dd HH:mm:ss"
             start-placeholder="开始日期"
@@ -23,7 +23,7 @@
         </el-form-item>
         <el-form-item label="活动条件时间">
           <el-date-picker
-            v-model="totalTime"
+            v-model="meetTime"
             type="datetimerange"
             value-format="yyyy-MM-dd HH:mm:ss"
             start-placeholder="开始日期"
