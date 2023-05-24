@@ -4,7 +4,7 @@
       <el-form-item label="账号">
         <el-input v-model="form.username" clearable placeholder="请输入账号" />
       </el-form-item>
-      <el-form-item label="时间">
+      <el-form-item label="领取时间">
         <el-date-picker
           v-model="taskTime"
           style="width: 464px"
